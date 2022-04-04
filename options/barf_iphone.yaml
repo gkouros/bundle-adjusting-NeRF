@@ -3,4 +3,5 @@ _parent_: options/barf_llff.yaml
 data:                                                       # data options
     dataset: iphone                                         # dataset name
     scene: chrysler                                         # scene name
-    image_size: [1079, 1921]                                # input image sizes [height,width]
+    image_size: [135, 240]                                # input image sizes [height,width]
+    focal: 233.21013161

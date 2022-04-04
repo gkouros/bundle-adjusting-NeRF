@@ -20,7 +20,9 @@ from util import log, debug
 class Dataset(base.Dataset):
 
     def __init__(self, opt, split="train", subset=None):
-        self.raw_H, self.raw_W = 1080, 1920
+        # self.raw_H, self.raw_W = 1080, 1920
+        self.raw_H, self.raw_W = opt.data.image_size
+        self.focal = opt.data.focal
         super().__init__(opt, split)
         self.root = opt.data.root or "data/iphone"
         self.path = "{}/{}".format(self.root, opt.data.scene)
@@ -29,8 +31,7 @@ class Dataset(base.Dataset):
                            key=lambda f: int(f.split(".")[0]))
         # manually split train/val subsets
         num_val_split = int(len(self)*opt.data.val_ratio)
-        self.list = self.list[:-
-                              num_val_split] if split == "train" else self.list[-num_val_split:]
+        self.list = self.list[:-num_val_split] if split == "train" else self.list[-num_val_split:]
         if subset:
             self.list = self.list[:subset]
         # preload dataset
@@ -73,7 +74,7 @@ class Dataset(base.Dataset):
         return image
 
     def get_camera(self, opt, idx):
-        self.focal = self.raw_W*4.2/(12.8/2.55)
+        # self.focal = self.raw_W*4.2/(12.8/2.55)
         intr = torch.tensor([[self.focal, 0, self.raw_W/2],
                              [0, self.focal, self.raw_H/2],
                              [0, 0, 1]]).float()
