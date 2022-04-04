@@ -24,7 +24,7 @@ class Dataset(base.Dataset):
         self.raw_H, self.raw_W = opt.data.image_size
         self.focal = opt.data.focal
         super().__init__(opt, split)
-        self.root = opt.data.root or "data/iphone"
+        self.root = opt.data.root or "datasets/iphone"
         self.path = "{}/{}".format(self.root, opt.data.scene)
         self.path_image = "{}/images".format(self.path)
         self.list = sorted(os.listdir(self.path_image),
