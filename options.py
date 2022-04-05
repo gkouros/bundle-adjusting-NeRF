@@ -117,12 +117,6 @@ def save_options_file(opt):
             print("existing options file found (different from current one)...")
             os.system("diff {} {}".format(opt_fname,opt_new_fname))
             os.system("rm {}".format(opt_new_fname))
-            override = None
-            while override not in ["y","n"]:
-                override = input("override? (y/n) ")
-            if override=="n":
-                print("safe exiting...")
-                exit()
         else: print("existing options file found (identical)")
     else: print("(creating new options file...)")
     with open(opt_fname,"w") as file:
