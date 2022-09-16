@@ -17,7 +17,6 @@ from util import log,debug
 class Dataset(base.Dataset):
 
     def __init__(self,opt,split="train",subset=None):
-        self.raw_H,self.raw_W = 3024,4032
         super().__init__(opt,split)
         self.root = opt.data.root or "data/llff"
         self.path = "{}/{}".format(self.root,opt.data.scene)
@@ -46,8 +45,8 @@ class Dataset(base.Dataset):
         cam_data = data[:,:-2].view([-1,3,5]) # [N,3,5]
         poses_raw = cam_data[...,:4] # [N,3,4]
         poses_raw[...,0],poses_raw[...,1] = poses_raw[...,1],-poses_raw[...,0]
-        raw_H,raw_W,self.focal = cam_data[0,:,-1]
-        assert(self.raw_H==raw_H and self.raw_W==raw_W)
+        self.raw_H, self.raw_W, self.focal = cam_data[0,:,-1]
+        # assert(self.raw_H==raw_H and self.raw_W==raw_W)
         # parse depth bounds
         bounds = data[:,-2:] # [N,2]
         scale = 1./(bounds.min()*0.75) # not sure how this was determined
