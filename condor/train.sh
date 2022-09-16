@@ -19,7 +19,8 @@ python3 train.py \
   --yaml=barf_llff \
   --name=$EXP \
   --data.scene=$NAME \
-  --barf_c2f=[0.1,0.5] && \
+  --barf_c2f=[0.1,0.5] \
+  --visdom! && \
 
 python3 evaluate.py \
   --group=$NAME \
