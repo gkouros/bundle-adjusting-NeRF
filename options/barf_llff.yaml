@@ -15,8 +15,8 @@ optim:                                                      # optimization optio
     test_photo: true                                        # test-time photometric optimization for evaluation
     test_iter: 100                                          # number of iterations for test-time optimization
 
-# visdom:                                                     # Visdom options
-#     cam_depth: 0.2                                          # size of visualized cameras
+visdom:                                                     # Visdom options
+    cam_depth: 0.2                                          # size of visualized cameras
 
 data:
   root: datasets
