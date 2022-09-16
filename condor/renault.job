@@ -5,17 +5,17 @@ Request_GPUs = 1
 RequestMemory = 8Gb
 +RequestWalltime = 259000
 
-Requirements = (CUDACapability >= 3.5)&&(CUDAGlobalMemoryMb >= 8000.0)&&(machine != "andromeda.esat.kuleuven.be")
+Requirements = (CUDACapability >= 3.5)&&(CUDAGlobalMemoryMb >= 11000.0)&&(machine != "andromeda.esat.kuleuven.be")
 
 Initialdir = /users/visics/gkouros/projects/nerf-repos/bundle-adjusting-NeRF/condor
 Executable = /users/visics/gkouros/projects/nerf-repos/bundle-adjusting-NeRF/condor/train.sh
-Arguments = chrysler_360 $(Cluster)
+Arguments = renault $(Cluster)
 
 NiceUser = false
 
-Log    =  ../output/chrysler/exp.$(Cluster).log
-Output =  ../output/chrysler/exp.$(Cluster).out
-Error  =  ../output/chrysler/exp.$(Cluster).err
+Log    =  ../output/renault/exp.$(Cluster).log
+Output =  ../output/renault/exp.$(Cluster).out
+Error  =  ../output/renault/exp.$(Cluster).err
 
 Notification = Complete
 Queue 1
