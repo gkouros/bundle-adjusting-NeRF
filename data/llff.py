@@ -17,12 +17,12 @@ from util import log,debug
 class Dataset(base.Dataset):
 
     def __init__(self,opt,split="train",subset=None):
-        super().__init__(opt,split)
         self.root = opt.data.root or "data/llff"
         self.path = "{}/{}".format(self.root,opt.data.scene)
         self.path_image = "{}/images".format(self.path)
         image_fnames = sorted(os.listdir(self.path_image))
         poses_raw,bounds = self.parse_cameras_and_bounds(opt)
+        super().__init__(opt,split)
         self.list = list(zip(image_fnames,poses_raw,bounds))
         # manually split train/val subsets
         num_val_split = int(len(self)*opt.data.val_ratio)
