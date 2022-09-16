@@ -17,3 +17,6 @@ optim:                                                      # optimization optio
 
 visdom:                                                     # Visdom options
     cam_depth: 0.2                                          # size of visualized cameras
+
+data:
+  root: datasets
