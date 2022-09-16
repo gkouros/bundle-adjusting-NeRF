@@ -1,0 +1,18 @@
+Universe = vanilla
+
+RequestCpus = 4
+Request_GPUs = 1
+RequestMemory = 8Gb
++RequestWalltime = 14000
+
+Requirements = (CUDACapability >= 3.5)&&(CUDAGlobalMemoryMb >= 8000.0)
+
+Initialdir = /users/visics/gkouros/projects/nerf-repos/bundle-adjusting-NeRF/condor
+Executable = /users/visics/gkouros/projects/nerf-repos/bundle-adjusting-NeRF/condor/train.sh
+
+Log    =  logs/interactive.$(Cluster).log
+Output =  logs/interactive.$(Cluster).out
+Error  =  logs/interactive.$(Cluster).err
+
+Notification = Complete
+Queue 1

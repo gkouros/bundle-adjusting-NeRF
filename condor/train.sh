@@ -13,12 +13,21 @@ conda activate barf-env
 dir=/users/visics/gkouros/projects/nerf-repos/bundle-adjusting-NeRF/
 cd $dir
 mkdir -p output/$NAME/$EXP
+python3 train.py \
+  --group=$NAME \
+  --model=barf \
+  --yaml=barf_llff \
+  --name=$EXP \
+  --data.scene=$NAME \
+  --barf_c2f=[0.1,0.5] && \
+
 python3 evaluate.py \
   --group=$NAME \
   --model=barf \
   --yaml=barf_llff \
   --name=$EXP \
-  --data.scene=$NAME
+  --data.scene=$NAME \
+  --resume
 
 
 conda deactivate
